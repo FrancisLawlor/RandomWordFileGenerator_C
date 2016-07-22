@@ -29,7 +29,7 @@ int main(int argc, char * argv[]) {
 				numOfWords=atoi(optarg);
 				break;
 			case 'h':
-				fprintf(stderr, "-i Choose number of lines to print\n");
+				fprintf(stderr, "-i Choose number of lines to print\n-f Choose file to write to\n");
 				exit(EXIT_SUCCESS);
 				break;
 			case 'f':
@@ -47,14 +47,14 @@ int main(int argc, char * argv[]) {
 		exit(EXIT_FAILURE);
 	}
 
-	if(file==false){
+	if(file==false) {
 		printf("Please enter a file name: \n");
 		
 		scanf("%ms", &fileinfo.filename);
 	}
 
 	// A new get request to obtain every word.
-	for(i=0;i<numOfWords;i++){
+	for(i=0;i<numOfWords;i++) {
 		CURL *curl;
 		CURLcode res;
 		curl = curl_easy_init();
@@ -67,13 +67,13 @@ int main(int argc, char * argv[]) {
 			res = curl_easy_perform(curl);
 	    		curl_easy_cleanup(curl);
 	  	}
-		
+			
 		wordsgenerated = true;
 	}
 
-	if(wordsgenerated){
+	if(wordsgenerated) {
 		printf("%d random words generated in %s!\n", numOfWords, fileinfo.filename);
 	}
 
-  return 0;
+	return 0;
 }

@@ -20,3 +20,5 @@ Options:
 f - specify name of file to write sequence of random words to
 
 n - specify number of words to write
+
+l - specify length for each new random word

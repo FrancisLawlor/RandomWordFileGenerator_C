@@ -38,7 +38,7 @@ int main(int argc, char * argv[]) {
 				strcat(url,optarg);
 				break;
 			case 'h':
-				fprintf(stderr, "-i Choose number of lines to print\n-f Choose file to write to\n");
+				fprintf(stderr, "-i Choose number of lines to print\n-f Choose file to write to\n-l Choose length for each word in characters\n");
 				exit(EXIT_SUCCESS);
 				break;
 			case 'f':

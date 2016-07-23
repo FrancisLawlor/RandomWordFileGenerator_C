@@ -3,6 +3,7 @@
 #include <curl/curl.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <string.h>
 
 typedef struct callbackdata {
 	char* filename;
@@ -22,11 +23,19 @@ int main(int argc, char * argv[]) {
 	int opt;
 	bool wordsgenerated=false, file = false;
 	callbackdata fileinfo;
+	char * url = malloc(strlen("http://randomword.setgetgo.com/get.php?len=")+3);
+	strcpy(url, "http://randomword.setgetgo.com/get.php?len=");
 
-	while((opt=getopt(argc, argv, "hn:f:")) != -1) {
+	while((opt=getopt(argc, argv, "hn:f:l:")) != -1) {
 		switch(opt) {
 			case 'n':
 				numOfWords=atoi(optarg);
+				break;
+			case 'l':	
+				if((atoi(optarg) < 3) || (atoi(optarg) >20)) {
+					printf("Argument to -l must by between 3 and 20!\n\n");
+				}
+				strcat(url,optarg);
 				break;
 			case 'h':
 				fprintf(stderr, "-i Choose number of lines to print\n-f Choose file to write to\n");
@@ -61,7 +70,7 @@ int main(int argc, char * argv[]) {
 		
 
 		if(curl) {
-			curl_easy_setopt(curl, CURLOPT_URL, "http://randomword.setgetgo.com/get.php");
+			curl_easy_setopt(curl, CURLOPT_URL, url);
 			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, getWord);
 			curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&fileinfo);
 			res = curl_easy_perform(curl);

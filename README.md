@@ -2,7 +2,7 @@
 
 Populate a file with a specific number of random words.
 
-Instructions for use:
+### Usage:
 
 Compile the source file.
 
@@ -15,7 +15,8 @@ Run the built file:
 ```
 ./randomwords.out -n 6 -f words.txt
 ```
-Options:
+
+### Options
 
 f - specify name of file to write sequence of random words to
 

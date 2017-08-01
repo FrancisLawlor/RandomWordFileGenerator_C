@@ -19,7 +19,7 @@ int getWord(void* ptr, size_t size, size_t nmemb, void* data) {
 
 int main(int argc, char* argv[]) {
 	int i;
-	int numOfWords;
+	int numOfWords = -1;
 	int opt;
 	bool wordsGenerated = false;
 	bool file = false;
@@ -54,6 +54,11 @@ int main(int argc, char* argv[]) {
 
 	if (argc == 1) {
 		fprintf(stderr, "Expected argument after options.\n");
+		exit(EXIT_FAILURE);
+	}
+
+	if (numOfWords == -1) {
+		fprintf(stderr, "Please specify number of words to be generated using -n option.\n");
 		exit(EXIT_FAILURE);
 	}
 

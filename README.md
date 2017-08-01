@@ -4,10 +4,10 @@ Populate a file with a specific number of random words.
 
 ### Usage:
 
-Compile the source file.
+Compile the source file:
 
 ```
-gcc RandomWordGenerator.c -o randomwords.out
+gcc RandomWordGenerator.c -lcurl -o randomwords.out
 ```
 
 Run the built file:

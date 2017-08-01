@@ -24,8 +24,8 @@ int main(int argc, char* argv[]) {
 	bool wordsGenerated = false;
 	bool file = false;
 	CallbackData fileInfo;
-	char* url = malloc(strlen("http://randomword.setgetgo.com/get.php?len=") + 3);
-	strcpy(url, "http://randomword.setgetgo.com/get.php?len=");
+	char* url = malloc(strlen("http://www.setgetgo.com/randomword/get.php?len=") + 3);
+	strcpy(url, "http://www.setgetgo.com/randomword/get.php?len=");
 
 	while ((opt = getopt(argc, argv, "hn:f:l:")) != -1) {
 		switch (opt) {

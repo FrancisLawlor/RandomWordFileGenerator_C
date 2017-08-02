@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <string.h>
 
+#define API_URL "http://www.setgetgo.com/randomword/get.php?len="
+
 typedef struct CallbackData {
 	char* fileName;
 } CallbackData;
@@ -24,8 +26,8 @@ int main(int argc, char* argv[]) {
 	bool wordsGenerated = false;
 	bool file = false;
 	CallbackData fileInfo;
-	char* url = malloc(strlen("http://www.setgetgo.com/randomword/get.php?len=") + 3);
-	strcpy(url, "http://www.setgetgo.com/randomword/get.php?len=");
+	char* url = malloc(strlen(API_URL) + 3);
+	strcpy(url, API_URL);
 
 	while ((opt = getopt(argc, argv, "hn:f:l:")) != -1) {
 		switch (opt) {

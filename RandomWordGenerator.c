@@ -12,11 +12,10 @@ typedef struct CallbackData {
 } CallbackData;
 
 int getWord(void* ptr, size_t size, size_t nmemb, void* data) {
-	// Assumes empty text file.
 	CallbackData* callbackData = (CallbackData*) data;
-	FILE* f = fopen(callbackData -> fileName, "a");
-	fputs(ptr, f);
-	fputs("\n", f);
+	FILE* file = fopen(callbackData -> fileName, "a");
+	fputs(ptr, file);
+	fputs("\n", file);
 }
 
 int main(int argc, char* argv[]) {
@@ -64,13 +63,16 @@ int main(int argc, char* argv[]) {
 		exit(EXIT_FAILURE);
 	}
 
-	if (file == false) {
+	if (!file) {
 		printf("Please enter a file name: \n");
 
 		scanf("%ms", &fileInfo.fileName);
 	}
 
-	// A new get request to obtain every word.
+	// Clear file.
+	FILE* f = fopen(fileInfo.fileName, "w");
+	fclose(f);
+
 	for (i = 0; i < numOfWords; i++) {
 		CURL* curl;
 		CURLcode res;

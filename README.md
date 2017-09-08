@@ -1,7 +1,5 @@
 # RandomWordFileGenerator_C
 
-Populate a file with a specific number of random words.
-
 ### Usage:
 
 Compile the source file:
@@ -10,7 +8,7 @@ Compile the source file:
 gcc RandomWordGenerator.c -lcurl -o randomwords.out
 ```
 
-Run the built file:
+Run:
 
 ```
 ./randomwords.out -n 6 -f words.txt
